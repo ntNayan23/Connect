@@ -51,3 +51,37 @@ export const Fonts = Platform.select({
     mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
   },
 });
+
+// src/constants/theme.ts
+
+import { MapPin, Plane, Bike, Heart } from 'lucide-react-native';
+import React from 'react';
+
+type IconComponent = React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>;
+
+export const getActivityIcon = (type: string): IconComponent => {
+  switch (type) {
+    case 'travel':
+      return Plane;
+    case 'cycling':
+      return Bike;
+    case 'romance':
+      return Heart;
+    default:
+      return MapPin;
+  }
+};
+
+export const getActivityColor = (type: string): string => {
+  switch (type) {
+    case 'travel':
+      return '#3B7FFF'; // blue
+    case 'cycling':
+      return '#FFA947'; // orange
+    case 'romance':
+      return '#D946EF'; // purple
+    default:
+      return '#9CA3AF'; // gray
+  }
+};
+
